@@ -11,6 +11,7 @@ module Players
       opponent = ""
       win = nil
       lose = nil
+      comb = nil
       self.token == "X" ? opponent = "O" : opponent = "X"
       "5" if !board.taken?("5")
       ["1", "3", "7", "9"].sample if board.turn_count == 1
@@ -22,7 +23,8 @@ module Players
       if lose
         lose.find{|pos| board.cells[pos] == " "}.to_s
       end
-      WIN_COMBINATIONS.find{|c| board.cells[c[0]] == self.token || board.cells[c[1]] == self.token || board.cells[c[2]] == self.token}.sample.to_s
+      comb = WIN_COMBINATIONS.find{|c| board.cells[c[0]] == self.token || board.cells[c[1]] == self.token || board.cells[c[2]] == self.token}
+      comb.sample.to_s if comb
     end
   end
 end
