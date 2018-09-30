@@ -24,7 +24,7 @@ module Players
         lose.find{|pos| board.cells[pos] == " "}.to_s
       end
       comb = WIN_COMBINATIONS.find{|c| board.cells[c[0]] == self.token || board.cells[c[1]] == self.token || board.cells[c[2]] == self.token}
-      comb.sample.to_s if comb
+      comb ? comb.sample.to_s : MOVES.sample
     end
   end
 end
